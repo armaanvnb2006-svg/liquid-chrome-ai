@@ -559,9 +559,9 @@ function Footer() {
       <div className="glass rounded-2xl px-6 py-5 flex items-center justify-between flex-wrap gap-3 text-xs text-muted-foreground">
         <p>© {new Date().getFullYear()} Armaan Saad. All rights reserved.</p>
         <div className="flex items-center gap-3">
-          <a href="#" className="hover:text-foreground transition"><Github className="h-4 w-4" /></a>
-          <a href="#" className="hover:text-foreground transition"><Linkedin className="h-4 w-4" /></a>
-          <a href="#" className="hover:text-foreground transition"><Instagram className="h-4 w-4" /></a>
+          <a href="https://github.com/armaan24905" target="_blank" rel="noreferrer" className="hover:text-foreground transition"><Github className="h-4 w-4" /></a>
+          <a href="https://www.linkedin.com/in/armaan-saad-120251306" target="_blank" rel="noreferrer" className="hover:text-foreground transition"><Linkedin className="h-4 w-4" /></a>
+          <a href="https://wa.me/qr/FG3D2ESSKPB4L1" target="_blank" rel="noreferrer" className="hover:text-foreground transition"><MessageCircle className="h-4 w-4" /></a>
         </div>
       </div>
       <div className="mt-4 h-px gradient-line" />

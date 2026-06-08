@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import logoA from "@/assets/logo-a.png";
+import postgresElephant from "@/assets/postgres-elephant.png";
 import {
   ArrowUpRight, Download, Github, Linkedin, MessageCircle, Mail,
   Code2, Database, Brain, Cpu, Sparkles, GraduationCap, MapPin,
@@ -43,7 +44,7 @@ const SKILLS = [
   { name: "React", icon: Layers },
   { name: "Node.js", icon: Layers },
   { name: "MySQL", icon: Database },
-  { name: "PostgreSQL", icon: Database },
+  { name: "PostgreSQL", icon: Database, img: postgresElephant },
   { name: "MERN Stack", icon: Rocket },
   { name: "Generative AI", icon: Sparkles },
   { name: "LLM Engineering", icon: Brain },
@@ -358,7 +359,11 @@ function Skills() {
             className="glass tilt-card group rounded-2xl p-5 flex flex-col items-center justify-center gap-3 aspect-square text-center"
           >
             <div className="grid h-14 w-14 place-items-center rounded-2xl glass-strong transition-transform duration-500 group-hover:-translate-y-1 group-hover:rotate-3">
-              <s.icon className="h-6 w-6 text-foreground/90" />
+              {"img" in s && (s as any).img ? (
+                <img src={(s as any).img} alt={s.name} className="h-8 w-8 object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]" />
+              ) : (
+                <s.icon className="h-6 w-6 text-foreground/90" />
+              )}
             </div>
             <p className="text-xs md:text-sm font-medium text-foreground/90">{s.name}</p>
           </div>
@@ -374,9 +379,9 @@ function Projects() {
     <section id="projects" className="glass tilt-card reveal rounded-3xl p-8 md:p-12">
       <div className="flex items-end justify-between gap-4 flex-wrap">
         <SectionHeader icon={<Rocket className="h-5 w-5" />} title="Projects" />
-        <a href="#contact" className="shimmer inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-sm">
-          View All Projects <ArrowUpRight className="h-4 w-4" />
-        </a>
+        <span className="shimmer inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-sm text-chrome">
+          My Projects <Rocket className="h-4 w-4" />
+        </span>
       </div>
       <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {PROJECTS.map((p) => (
@@ -458,9 +463,9 @@ function Education() {
 function Stats() {
   const items = [
     { icon: Code2, label: "3+", sub: "Projects Planned" },
-    { icon: Layers, label: "100+", sub: "Hours of Learning" },
+    { icon: Layers, label: "300+", sub: "Hours of Learning" },
     { icon: Star, label: "8.4", sub: "CGPA" },
-    { icon: Target, label: "Goal", sub: "AI Engineer" },
+    { icon: Target, label: "Goal", sub: "AI & LLM Engineer" },
   ];
   return (
     <section className="glass reveal rounded-3xl p-6 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-4">

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import logoA from "@/assets/logo-a.png";
 import {
-  ArrowUpRight, Download, Github, Linkedin, Instagram, Mail,
+  ArrowUpRight, Download, Github, Linkedin, MessageCircle, Mail,
   Code2, Database, Brain, Cpu, Sparkles, GraduationCap, MapPin,
   Star, Layers, Rocket, Target, Send, ExternalLink, BarChart3,
   TrendingUp, CloudSun, Award, Briefcase,

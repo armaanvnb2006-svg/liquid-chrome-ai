@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import logoA from "@/assets/logo-a.png";
 import {
-  ArrowUpRight, Download, Github, Linkedin, Instagram, Mail,
+  ArrowUpRight, Download, Github, Linkedin, MessageCircle, Mail,
   Code2, Database, Brain, Cpu, Sparkles, GraduationCap, MapPin,
   Star, Layers, Rocket, Target, Send, ExternalLink, BarChart3,
   TrendingUp, CloudSun, Award, Briefcase,
@@ -501,10 +501,10 @@ function Contact() {
           </p>
           <div className="mt-8 space-y-3">
             {[
-              { icon: Mail, label: "Email", value: "armaansaad.dev@gmail.com", href: "mailto:armaansaad.dev@gmail.com" },
-              { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/armaansaad", href: "#" },
-              { icon: Github, label: "GitHub", value: "github.com/ArmaanSaad-h", href: "#" },
-              { icon: Instagram, label: "Instagram", value: "@armaan.saad", href: "#" },
+              { icon: Mail, label: "Email", value: "armaanvnb2006@gmail.com", href: "mailto:armaanvnb2006@gmail.com" },
+              { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/armaan-saad", href: "https://www.linkedin.com/in/armaan-saad-120251306?utm_source=share_via&utm_content=profile&utm_medium=member_android" },
+              { icon: Github, label: "GitHub", value: "github.com/armaan24905", href: "https://github.com/armaan24905" },
+              { icon: MessageCircle, label: "WhatsApp", value: "Chat on WhatsApp", href: "https://wa.me/qr/FG3D2ESSKPB4L1" },
             ].map((c) => (
               <a key={c.label} href={c.href} className="glass tilt-card group flex items-center gap-4 rounded-2xl p-4">
                 <div className="grid h-11 w-11 place-items-center rounded-xl glass-strong group-hover:shadow-glow">
@@ -559,9 +559,9 @@ function Footer() {
       <div className="glass rounded-2xl px-6 py-5 flex items-center justify-between flex-wrap gap-3 text-xs text-muted-foreground">
         <p>© {new Date().getFullYear()} Armaan Saad. All rights reserved.</p>
         <div className="flex items-center gap-3">
-          <a href="#" className="hover:text-foreground transition"><Github className="h-4 w-4" /></a>
-          <a href="#" className="hover:text-foreground transition"><Linkedin className="h-4 w-4" /></a>
-          <a href="#" className="hover:text-foreground transition"><Instagram className="h-4 w-4" /></a>
+          <a href="https://github.com/armaan24905" target="_blank" rel="noreferrer" className="hover:text-foreground transition"><Github className="h-4 w-4" /></a>
+          <a href="https://www.linkedin.com/in/armaan-saad-120251306" target="_blank" rel="noreferrer" className="hover:text-foreground transition"><Linkedin className="h-4 w-4" /></a>
+          <a href="https://wa.me/qr/FG3D2ESSKPB4L1" target="_blank" rel="noreferrer" className="hover:text-foreground transition"><MessageCircle className="h-4 w-4" /></a>
         </div>
       </div>
       <div className="mt-4 h-px gradient-line" />

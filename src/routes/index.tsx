@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import logoA from "@/assets/logo-a.png";
 import {
   ArrowUpRight, Download, Github, Linkedin, Instagram, Mail,
   Code2, Database, Brain, Cpu, Sparkles, GraduationCap, MapPin,
@@ -172,7 +173,9 @@ function Navbar() {
         }`}
       >
         <a href="#home" className="flex items-center gap-3 shrink-0">
-          <span className="grid h-9 w-9 place-items-center rounded-full glass text-sm font-semibold text-chrome">A</span>
+          <span className="grid h-10 w-10 place-items-center rounded-2xl glass-strong p-1.5 shadow-glow">
+            <img src={logoA} alt="Armaan Saad logo" className="h-full w-full object-contain drop-shadow-[0_0_8px_rgba(255,255,255,0.25)]" />
+          </span>
           <span className="hidden sm:block text-sm font-medium tracking-tight">Armaan Saad</span>
         </a>
         <ul className="hidden md:flex items-center gap-1 text-sm text-muted-foreground">

@@ -273,7 +273,13 @@ function Hero() {
               View Projects
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
             </a>
-            <a href="#contact" className="shimmer group flex items-center gap-2 rounded-full glass px-5 py-3 text-sm font-medium">
+            <a
+              href={resumeAsset.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleDownloadCv}
+              className="shimmer group flex items-center gap-2 rounded-full glass px-5 py-3 text-sm font-medium"
+            >
               Download CV
               <Download className="h-4 w-4" />
             </a>

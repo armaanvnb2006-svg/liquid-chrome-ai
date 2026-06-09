@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import logoA from "@/assets/logo-a.png";
-import postgresElephant from "@/assets/postgres-elephant.png";
+
 import {
   ArrowUpRight, Download, Github, Linkedin, MessageCircle, Mail,
   Code2, Database, Brain, Cpu, Sparkles, GraduationCap, MapPin,
@@ -44,7 +44,7 @@ const SKILLS = [
   { name: "React", icon: Layers },
   { name: "Node.js", icon: Layers },
   { name: "MySQL", icon: Database },
-  { name: "PostgreSQL", icon: Database, img: postgresElephant },
+  { name: "PostgreSQL", icon: Database },
   { name: "MERN Stack", icon: Rocket },
   { name: "Generative AI", icon: Sparkles },
   { name: "LLM Engineering", icon: Brain },

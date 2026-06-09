@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import logoA from "@/assets/logo-a.png";
+import resumeAsset from "@/assets/Armaan_Saad_Resume.pdf.asset.json";
 
 import {
   ArrowUpRight, Download, Github, Linkedin, MessageCircle, Mail,

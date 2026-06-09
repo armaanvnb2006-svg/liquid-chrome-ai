@@ -323,6 +323,48 @@ function Hero() {
           </div>
         </div>
       </div>
+
+      {showCvModal && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-fade-up"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setShowCvModal(false)}
+        >
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-xl" />
+          <div
+            className="relative glass-strong rounded-3xl p-7 md:p-8 w-full max-w-md shadow-glow"
+            style={{ animation: "fade-up 280ms ease-out both" }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="absolute inset-x-0 top-0 h-px gradient-line" />
+            <div className="flex items-center gap-3">
+              <span className="grid h-10 w-10 place-items-center rounded-2xl glass">
+                <Download className="h-4 w-4" />
+              </span>
+              <h3 className="text-lg font-semibold text-chrome">Download Resume</h3>
+            </div>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Would you like to download this resume?
+            </p>
+            <div className="mt-6 flex flex-wrap justify-end gap-3">
+              <button
+                onClick={() => setShowCvModal(false)}
+                className="rounded-full glass px-5 py-2.5 text-sm font-medium hover:opacity-80 transition"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmDownload}
+                className="shimmer group flex items-center gap-2 rounded-full glass-strong px-5 py-2.5 text-sm font-medium"
+              >
+                Download
+                <Download className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

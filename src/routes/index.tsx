@@ -211,6 +211,23 @@ function Hero() {
   const [text, setText] = useState("");
   const [idx, setIdx] = useState(0);
   const [del, setDel] = useState(false);
+  const [showCvModal, setShowCvModal] = useState(false);
+
+  const handleDownloadCv = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.open(resumeAsset.url, "_blank", "noopener,noreferrer");
+    setShowCvModal(true);
+  };
+
+  const confirmDownload = () => {
+    const a = document.createElement("a");
+    a.href = resumeAsset.url;
+    a.download = "Armaan_Saad_Resume.pdf";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setShowCvModal(false);
+  };
 
   useEffect(() => {
     const phrase = TYPING[idx % TYPING.length];

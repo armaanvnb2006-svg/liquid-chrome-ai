@@ -445,7 +445,7 @@ function Projects() {
     <section id="projects" className="glass tilt-card reveal rounded-3xl p-8 md:p-12">
       <div className="flex items-end justify-between gap-4 flex-wrap">
         <SectionHeader icon={<Rocket className="h-5 w-5" />} title="Projects" />
-        <span className="shimmer inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-sm text-chrome">
+        <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-sm font-medium text-foreground whitespace-nowrap">
           My Projects <Rocket className="h-4 w-4" />
         </span>
       </div>

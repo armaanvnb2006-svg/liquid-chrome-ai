@@ -6,7 +6,7 @@ import {
   ArrowUpRight, Download, Github, Linkedin, MessageCircle, Mail,
   Code2, Database, Brain, Cpu, Sparkles, GraduationCap, MapPin,
   Star, Layers, Rocket, Target, Send, ExternalLink, BarChart3,
-  TrendingUp, CloudSun, Award, Briefcase,
+  TrendingUp, CloudSun, Award, Briefcase, User,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -313,7 +313,7 @@ function About() {
   ];
   return (
     <section id="about" className="glass tilt-card reveal rounded-3xl p-8 md:p-12">
-      <SectionHeader icon={<span className="grid h-7 w-7 place-items-center rounded-md glass">👤</span>} title="About Me" />
+      <SectionHeader icon={<span className="grid h-7 w-7 place-items-center rounded-md glass"><User className="h-4 w-4 text-white" /></span>} title="About Me" />
       <div className="mt-8 grid lg:grid-cols-[1fr_1.1fr] gap-10">
         <div className="space-y-5 text-sm md:text-base text-muted-foreground leading-relaxed">
           <p>

@@ -210,6 +210,115 @@ function Navbar() {
   );
 }
 
+/* ---------- AI Orb (premium interactive card) ---------- */
+function AiOrb() {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const wrap = wrapRef.current;
+    const card = cardRef.current;
+    if (!wrap || !card) return;
+    const r = wrap.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+    const rx = (0.5 - y) * 14;
+    const ry = (x - 0.5) * 16;
+    card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(20px)`;
+    card.style.setProperty("--mx", `${x * 100}%`);
+    card.style.setProperty("--my", `${y * 100}%`);
+  };
+  const handleLeave = () => {
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transform = "";
+    card.style.setProperty("--mx", "50%");
+    card.style.setProperty("--my", "30%");
+  };
+
+  const particles = Array.from({ length: 14 }, (_, i) => ({
+    top: `${(i * 53) % 100}%`,
+    left: `${(i * 37) % 100}%`,
+    px: `${((i * 17) % 60) - 30}px`,
+    py: `${((i * 23) % 80) - 40}px`,
+    dur: `${6 + (i % 5)}s`,
+    delay: `${(i * 0.4) % 4}s`,
+  }));
+
+  return (
+    <div
+      ref={wrapRef}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      className="ai-card-3d relative h-[320px] md:h-[420px] flex items-center justify-center"
+    >
+      {/* Ambient volumetric glow */}
+      <div className="ai-ambient" />
+
+      {/* Orbital rings */}
+      <div className="ai-ring" />
+      <div className="ai-ring r2" />
+      <div className="ai-ring r3" />
+
+      {/* Floating particles */}
+      {particles.map((p, i) => (
+        <span
+          key={i}
+          className="ai-particle"
+          style={{
+            top: p.top,
+            left: p.left,
+            ["--px" as any]: p.px,
+            ["--py" as any]: p.py,
+            ["--dur" as any]: p.dur,
+            animationDelay: p.delay,
+          }}
+        />
+      ))}
+
+      {/* The card */}
+      <div
+        ref={cardRef}
+        className="ai-card-inner relative glass-strong rounded-[2.5rem] w-56 h-72 md:w-64 md:h-80 flex flex-col items-center justify-center shadow-glow overflow-hidden"
+      >
+        {/* Traveling border glow */}
+        <div className="ai-border-glow rounded-[2.5rem]" />
+        {/* Refraction follows cursor */}
+        <div className="ai-refraction" />
+        {/* Chrome shine sweep */}
+        <div className="ai-shine-overlay rounded-[2.5rem]" />
+        {/* Curved light lines */}
+        <svg className="ai-curve" viewBox="0 0 256 320" preserveAspectRatio="none">
+          <path d="M -20 80 Q 128 20 280 100" />
+          <path className="c2" d="M -20 180 Q 128 240 280 160" />
+          <path className="c3" d="M -20 260 Q 128 200 280 280" />
+        </svg>
+
+        <div className="relative z-10 text-6xl md:text-7xl font-semibold text-chrome tracking-tight ai-text-pulse">AI</div>
+        <p className="absolute bottom-8 px-4 text-center text-[11px] md:text-xs text-muted-foreground italic z-10">
+          Turning Ideas into<br/>Intelligent Solutions
+        </p>
+
+        {/* Inner sparkles */}
+        {[...Array(6)].map((_, i) => (
+          <span
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-white animate-pulse-glow z-10"
+            style={{
+              top: `${20 + ((i * 37) % 60)}%`,
+              left: `${10 + ((i * 53) % 80)}%`,
+              animationDelay: `${i * 0.4}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Soft floor shadow for depth */}
+      <div className="ai-shadow-floor" />
+    </div>
+  );
+}
+
 /* ---------- Hero ---------- */
 function Hero() {
   const [text, setText] = useState("");
@@ -290,43 +399,10 @@ function Hero() {
           </div>
         </div>
 
-        {/* Liquid glass AI orb */}
-        <div className="relative h-[320px] md:h-[420px] flex items-center justify-center">
-          <div className="absolute inset-0 animate-blob">
-            <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-3xl" />
-          </div>
-          <div className="relative glass-strong rounded-[2.5rem] w-56 h-72 md:w-64 md:h-80 flex flex-col items-center justify-center animate-float shadow-glow">
-            <div className="text-6xl md:text-7xl font-semibold text-chrome tracking-tight">AI</div>
-            <p className="absolute bottom-8 px-4 text-center text-[11px] md:text-xs text-muted-foreground italic">
-              Turning Ideas into<br/>Intelligent Solutions
-            </p>
-            {/* Orbits */}
-            <svg className="absolute -inset-10 pointer-events-none" viewBox="0 0 400 400">
-              <ellipse cx="200" cy="200" rx="180" ry="60" fill="none" stroke="url(#g1)" strokeWidth="1" opacity="0.5" transform="rotate(-20 200 200)" />
-              <ellipse cx="200" cy="200" rx="170" ry="55" fill="none" stroke="url(#g1)" strokeWidth="1" opacity="0.4" transform="rotate(15 200 200)" />
-              <defs>
-                <linearGradient id="g1" x1="0" x2="1">
-                  <stop offset="0" stopColor="white" stopOpacity="0" />
-                  <stop offset="0.5" stopColor="white" stopOpacity="0.8" />
-                  <stop offset="1" stopColor="white" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-            </svg>
-            {/* sparkles */}
-            {[...Array(6)].map((_, i) => (
-              <span
-                key={i}
-                className="absolute h-1 w-1 rounded-full bg-white animate-pulse-glow"
-                style={{
-                  top: `${20 + ((i * 37) % 60)}%`,
-                  left: `${10 + ((i * 53) % 80)}%`,
-                  animationDelay: `${i * 0.4}s`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
+        {/* Liquid glass AI orb - premium interactive centerpiece */}
+        <AiOrb />
       </div>
+
 
       {showCvModal && (
         <div

@@ -7,7 +7,8 @@ import {
   ArrowUpRight, Download, Github, Linkedin, MessageCircle, Mail,
   Code2, Database, Brain, Cpu, Sparkles, GraduationCap, MapPin,
   Star, Layers, Rocket, Target, Send, ExternalLink, BarChart3,
-  TrendingUp, CloudSun, Award, Briefcase, User,
+  TrendingUp, CloudSun, Award, Briefcase, User, GitBranch,
+  BrainCircuit, PieChart,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({

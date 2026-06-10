@@ -7,7 +7,8 @@ import {
   ArrowUpRight, Download, Github, Linkedin, MessageCircle, Mail,
   Code2, Database, Brain, Cpu, Sparkles, GraduationCap, MapPin,
   Star, Layers, Rocket, Target, Send, ExternalLink, BarChart3,
-  TrendingUp, CloudSun, Award, Briefcase, User,
+  TrendingUp, CloudSun, Award, Briefcase, User, GitBranch,
+  BrainCircuit, PieChart,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -46,9 +47,12 @@ const SKILLS = [
   { name: "Node.js", icon: Layers },
   { name: "MySQL", icon: Database },
   { name: "PostgreSQL", icon: Database },
+  { name: "DSA", icon: GitBranch },
   { name: "MERN Stack", icon: Rocket },
   { name: "Generative AI", icon: Sparkles },
   { name: "LLM Engineering", icon: Brain },
+  { name: "Machine Learning", icon: BrainCircuit },
+  { name: "Power BI & Data Analytics", icon: PieChart },
 ];
 
 const PROJECTS = [

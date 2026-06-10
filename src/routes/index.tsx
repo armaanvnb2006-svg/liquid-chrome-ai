@@ -47,9 +47,12 @@ const SKILLS = [
   { name: "Node.js", icon: Layers },
   { name: "MySQL", icon: Database },
   { name: "PostgreSQL", icon: Database },
+  { name: "DSA", icon: GitBranch },
   { name: "MERN Stack", icon: Rocket },
   { name: "Generative AI", icon: Sparkles },
   { name: "LLM Engineering", icon: Brain },
+  { name: "Machine Learning", icon: BrainCircuit },
+  { name: "Power BI & Data Analytics", icon: PieChart },
 ];
 
 const PROJECTS = [

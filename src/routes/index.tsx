@@ -290,43 +290,10 @@ function Hero() {
           </div>
         </div>
 
-        {/* Liquid glass AI orb */}
-        <div className="relative h-[320px] md:h-[420px] flex items-center justify-center">
-          <div className="absolute inset-0 animate-blob">
-            <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/5 blur-3xl" />
-          </div>
-          <div className="relative glass-strong rounded-[2.5rem] w-56 h-72 md:w-64 md:h-80 flex flex-col items-center justify-center animate-float shadow-glow">
-            <div className="text-6xl md:text-7xl font-semibold text-chrome tracking-tight">AI</div>
-            <p className="absolute bottom-8 px-4 text-center text-[11px] md:text-xs text-muted-foreground italic">
-              Turning Ideas into<br/>Intelligent Solutions
-            </p>
-            {/* Orbits */}
-            <svg className="absolute -inset-10 pointer-events-none" viewBox="0 0 400 400">
-              <ellipse cx="200" cy="200" rx="180" ry="60" fill="none" stroke="url(#g1)" strokeWidth="1" opacity="0.5" transform="rotate(-20 200 200)" />
-              <ellipse cx="200" cy="200" rx="170" ry="55" fill="none" stroke="url(#g1)" strokeWidth="1" opacity="0.4" transform="rotate(15 200 200)" />
-              <defs>
-                <linearGradient id="g1" x1="0" x2="1">
-                  <stop offset="0" stopColor="white" stopOpacity="0" />
-                  <stop offset="0.5" stopColor="white" stopOpacity="0.8" />
-                  <stop offset="1" stopColor="white" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-            </svg>
-            {/* sparkles */}
-            {[...Array(6)].map((_, i) => (
-              <span
-                key={i}
-                className="absolute h-1 w-1 rounded-full bg-white animate-pulse-glow"
-                style={{
-                  top: `${20 + ((i * 37) % 60)}%`,
-                  left: `${10 + ((i * 53) % 80)}%`,
-                  animationDelay: `${i * 0.4}s`,
-                }}
-              />
-            ))}
-          </div>
-        </div>
+        {/* Liquid glass AI orb - premium interactive centerpiece */}
+        <AiOrb />
       </div>
+
 
       {showCvModal && (
         <div

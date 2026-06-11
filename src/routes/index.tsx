@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 import logoA from "@/assets/logo-a.png";
 const resumeAsset = { url: "/Armaan_Saad_Resume.pdf" };
+
 
 import {
   ArrowUpRight, Download, Github, Linkedin, MessageCircle, Mail,

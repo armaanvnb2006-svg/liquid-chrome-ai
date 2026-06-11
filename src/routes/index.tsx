@@ -1,7 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 import logoA from "@/assets/logo-a.png";
 const resumeAsset = { url: "/Armaan_Saad_Resume.pdf" };
+
 
 import {
   ArrowUpRight, Download, Github, Linkedin, MessageCircle, Mail,
@@ -634,12 +637,49 @@ function Stats() {
 function Contact() {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const onSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    emailjs.init({ publicKey: "cJuSg_ah6GVY_7L89" });
+  }, []);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const name = String(fd.get("name") || "").trim();
+    const email = String(fd.get("email") || "").trim();
+    const message = String(fd.get("message") || "").trim();
+
+    if (!name || !email || !message) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
     setSending(true);
-    setTimeout(() => { setSending(false); setSent(true); setTimeout(() => setSent(false), 2500); }, 1200);
+    try {
+      await emailjs.send("service_u6abail", "template_3rprqu5", {
+        from_name: name,
+        from_email: email,
+        reply_to: email,
+        message,
+      });
+      toast.success("Message sent successfully.");
+      setSent(true);
+      form.reset();
+      setTimeout(() => setSent(false), 2500);
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
+
 
   return (
     <section id="contact" className="glass tilt-card reveal rounded-3xl p-8 md:p-12">
@@ -671,12 +711,13 @@ function Contact() {
           </div>
         </div>
 
-        <form onSubmit={onSubmit} className="glass rounded-2xl p-6 md:p-8 space-y-5">
-          <Field label="Name" id="name"><input id="name" required className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60" placeholder="Your name" /></Field>
-          <Field label="Email" id="email"><input id="email" type="email" required className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60" placeholder="you@example.com" /></Field>
+        <form ref={formRef} onSubmit={onSubmit} className="glass rounded-2xl p-6 md:p-8 space-y-5">
+          <Field label="Name" id="name"><input id="name" name="name" required className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60" placeholder="Your name" /></Field>
+          <Field label="Email" id="email"><input id="email" name="email" type="email" required className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60" placeholder="you@example.com" /></Field>
           <Field label="Message" id="msg">
-            <textarea id="msg" required rows={5} className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60 resize-none" placeholder="Tell me about the opportunity…" />
+            <textarea id="msg" name="message" required rows={5} className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60 resize-none" placeholder="Tell me about the opportunity…" />
           </Field>
+
           <button
             type="submit"
             disabled={sending}

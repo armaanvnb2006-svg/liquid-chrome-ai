@@ -711,12 +711,13 @@ function Contact() {
           </div>
         </div>
 
-        <form onSubmit={onSubmit} className="glass rounded-2xl p-6 md:p-8 space-y-5">
-          <Field label="Name" id="name"><input id="name" required className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60" placeholder="Your name" /></Field>
-          <Field label="Email" id="email"><input id="email" type="email" required className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60" placeholder="you@example.com" /></Field>
+        <form ref={formRef} onSubmit={onSubmit} className="glass rounded-2xl p-6 md:p-8 space-y-5">
+          <Field label="Name" id="name"><input id="name" name="name" required className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60" placeholder="Your name" /></Field>
+          <Field label="Email" id="email"><input id="email" name="email" type="email" required className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60" placeholder="you@example.com" /></Field>
           <Field label="Message" id="msg">
-            <textarea id="msg" required rows={5} className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60 resize-none" placeholder="Tell me about the opportunity…" />
+            <textarea id="msg" name="message" required rows={5} className="w-full bg-transparent outline-none text-sm placeholder:text-muted-foreground/60 resize-none" placeholder="Tell me about the opportunity…" />
           </Field>
+
           <button
             type="submit"
             disabled={sending}

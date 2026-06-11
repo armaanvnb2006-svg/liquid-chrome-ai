@@ -637,12 +637,49 @@ function Stats() {
 function Contact() {
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const onSubmit = (e: React.FormEvent) => {
+  useEffect(() => {
+    emailjs.init({ publicKey: "cJuSg_ah6GVY_7L89" });
+  }, []);
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const name = String(fd.get("name") || "").trim();
+    const email = String(fd.get("email") || "").trim();
+    const message = String(fd.get("message") || "").trim();
+
+    if (!name || !email || !message) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+
     setSending(true);
-    setTimeout(() => { setSending(false); setSent(true); setTimeout(() => setSent(false), 2500); }, 1200);
+    try {
+      await emailjs.send("service_u6abail", "template_3rprqu5", {
+        from_name: name,
+        from_email: email,
+        reply_to: email,
+        message,
+      });
+      toast.success("Message sent successfully.");
+      setSent(true);
+      form.reset();
+      setTimeout(() => setSent(false), 2500);
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
+
 
   return (
     <section id="contact" className="glass tilt-card reveal rounded-3xl p-8 md:p-12">

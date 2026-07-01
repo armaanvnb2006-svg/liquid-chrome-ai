@@ -457,7 +457,7 @@ function About() {
   const stats = [
     { icon: GraduationCap, label: "3rd Year", sub: "B.Tech (AI & DS)" },
     { icon: MapPin, label: "Vaniyambadi", sub: "Tamil Nadu, India" },
-    { icon: Star, label: "8.4 CGPA", sub: "Current" },
+    { icon: Star, label: "8.7 CGPA", sub: "Current" },
     { icon: Code2, label: "AI & LLM", sub: "Focused" },
   ];
   return (

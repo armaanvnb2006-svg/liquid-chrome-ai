@@ -613,7 +613,7 @@ function Stats() {
   const items = [
     { icon: Code2, label: "3+", sub: "Projects Planned" },
     { icon: Layers, label: "300+", sub: "Hours of Learning" },
-    { icon: Star, label: "8.4", sub: "CGPA" },
+    { icon: Star, label: "8.7", sub: "CGPA" },
     { icon: Target, label: "Goal", sub: "AI & LLM Engineer" },
   ];
   return (

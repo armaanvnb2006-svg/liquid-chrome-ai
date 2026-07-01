@@ -84,10 +84,10 @@ const PROJECTS = [
 
 const TIMELINE = [
   {
-    period: "2023 — Present",
+    period: "2024 — Present",
     title: "B.Tech in Artificial Intelligence & Data Science",
     org: "C. Abdul Hakeem College of Engineering & Technology, MelVisharam",
-    detail: "3rd Year • Current CGPA 8.4 • Focused on AI, LLMs, and applied data analytics.",
+    detail: "3rd Year • Current CGPA 8.7 • Focused on AI, LLMs, and applied data analytics.",
     icon: GraduationCap,
   },
   {

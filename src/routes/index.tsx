@@ -457,7 +457,7 @@ function About() {
   const stats = [
     { icon: GraduationCap, label: "3rd Year", sub: "B.Tech (AI & DS)" },
     { icon: MapPin, label: "Vaniyambadi", sub: "Tamil Nadu, India" },
-    { icon: Star, label: "8.4 CGPA", sub: "Current" },
+    { icon: Star, label: "8.7 CGPA", sub: "Current" },
     { icon: Code2, label: "AI & LLM", sub: "Focused" },
   ];
   return (
@@ -613,7 +613,7 @@ function Stats() {
   const items = [
     { icon: Code2, label: "3+", sub: "Projects Planned" },
     { icon: Layers, label: "300+", sub: "Hours of Learning" },
-    { icon: Star, label: "8.4", sub: "CGPA" },
+    { icon: Star, label: "8.7", sub: "CGPA" },
     { icon: Target, label: "Goal", sub: "AI & LLM Engineer" },
   ];
   return (

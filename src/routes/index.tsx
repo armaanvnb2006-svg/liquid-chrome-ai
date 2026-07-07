@@ -58,13 +58,29 @@ const SKILLS = [
   { name: "Power BI & Data Analytics", icon: PieChart },
 ];
 
-const PROJECTS = [
+interface Project {
+  title: string;
+  desc: string;
+  icon: React.ElementType;
+  status: string;
+  tags: string[];
+  category?: string;
+  image?: string;
+  github?: string;
+  live?: string | null;
+}
+
+const PROJECTS: Project[] = [
   {
-    title: "Data Analytics Dashboard",
-    desc: "Interactive dashboard to visualize, analyze and extract insights from large datasets in real time.",
+    title: "Netflix Data Analytics Dashboard",
+    category: "Data Analytics | Python | EDA",
+    desc: "An interactive data analytics project that explores the Netflix dataset through data cleaning, exploratory data analysis (EDA), and insightful visualizations. Built to uncover trends, patterns, and business insights using Python.",
     icon: BarChart3,
-    status: "In Development",
-    tags: ["Python", "React", "D3"],
+    status: "Completed",
+    tags: ["Python", "Pandas", "NumPy", "Matplotlib", "Seaborn", "Jupyter"],
+    image: "/netflix-analytics-thumb.jpg",
+    github: "https://github.com/armaan24905/Netflix-Data-Analytics-EDA-Python",
+    live: null,
   },
   {
     title: "Sales Prediction System",
@@ -535,12 +551,23 @@ function Projects() {
       <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {PROJECTS.map((p) => (
           <article key={p.title} className="glass tilt-card group rounded-2xl p-6 flex flex-col">
+            {p.image && (
+              <div className="relative -mx-6 -mt-6 mb-4 overflow-hidden rounded-t-2xl">
+                <img src={p.image} alt={p.title} className="h-24 w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60" />
+              </div>
+            )}
             <div className="flex items-start justify-between">
               <div className="grid h-12 w-12 place-items-center rounded-xl glass-strong">
                 <p.icon className="h-5 w-5" />
               </div>
               <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition" />
             </div>
+            {p.category && (
+              <p className="mt-3 text-[10px] text-muted-foreground uppercase tracking-widest font-medium">
+                {p.category}
+              </p>
+            )}
             <h3 className="mt-5 text-lg font-semibold tracking-tight">{p.title}</h3>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
             <div className="mt-4 flex flex-wrap gap-1.5">
@@ -550,16 +577,34 @@ function Projects() {
             </div>
             <div className="mt-5 pt-5 border-t border-white/5 flex items-center justify-between">
               <span className="flex items-center gap-2 text-xs text-muted-foreground">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse-glow" />
+                <span className={`h-1.5 w-1.5 rounded-full animate-pulse-glow ${p.status === "Completed" ? "bg-emerald-400" : "bg-amber-400"}`} />
                 {p.status}
               </span>
               <div className="flex gap-2">
-                <a href="#" className="grid h-8 w-8 place-items-center rounded-full glass hover:bg-white/10 transition">
-                  <Github className="h-3.5 w-3.5" />
-                </a>
-                <a href="#" className="grid h-8 w-8 place-items-center rounded-full glass hover:bg-white/10 transition">
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
+                {p.github ? (
+                  <a href={p.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-full glass px-3 py-1.5 text-xs font-medium hover:bg-white/10 transition">
+                    <Github className="h-3.5 w-3.5" />
+                    Open Repository
+                  </a>
+                ) : (
+                  <a href="#" className="grid h-8 w-8 place-items-center rounded-full glass hover:bg-white/10 transition">
+                    <Github className="h-3.5 w-3.5" />
+                  </a>
+                )}
+                {p.live === null ? (
+                  <span className="inline-flex items-center rounded-full glass px-3 py-1.5 text-xs font-medium opacity-40 cursor-not-allowed">
+                    Coming Soon
+                  </span>
+                ) : p.live ? (
+                  <a href={p.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 rounded-full glass px-3 py-1.5 text-xs font-medium hover:bg-white/10 transition">
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                    Live Demo
+                  </a>
+                ) : (
+                  <a href="#" className="grid h-8 w-8 place-items-center rounded-full glass hover:bg-white/10 transition">
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </a>
+                )}
               </div>
             </div>
           </article>

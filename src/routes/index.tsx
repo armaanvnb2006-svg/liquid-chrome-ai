@@ -58,7 +58,19 @@ const SKILLS = [
   { name: "Power BI & Data Analytics", icon: PieChart },
 ];
 
-const PROJECTS = [
+interface Project {
+  title: string;
+  desc: string;
+  icon: React.ElementType;
+  status: string;
+  tags: string[];
+  category?: string;
+  image?: string;
+  github?: string;
+  live?: string | null;
+}
+
+const PROJECTS: Project[] = [
   {
     title: "Netflix Data Analytics Dashboard",
     category: "Data Analytics | Python | EDA",
